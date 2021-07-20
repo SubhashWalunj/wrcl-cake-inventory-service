@@ -1,8 +1,8 @@
 {
   "name": "waracle-cake-inventory-service",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "cake inventory rest service",
+  "main": "web.js",
   "scripts": {
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Subhash Walunj",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -27,5 +27,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-form-data": "^2.0.17"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
