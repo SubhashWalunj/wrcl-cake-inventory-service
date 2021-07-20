@@ -1,4 +1,5 @@
 import express from 'express';
+import { ISendResponse } from '../interfaces/send-response.interface';
 import CakeService from "../services/cake.service";
 
 class CakeController {
@@ -11,7 +12,12 @@ class CakeController {
     public async getAllCakes(req: express.Request, res: express.Response): Promise<void> {
         try {
             const cakes = await CakeService.getAllCakes();
-            res.status(200).send(cakes);
+            const response: ISendResponse = {
+                ok: true,
+                message: '',
+                data: cakes
+            };
+            res.status(200).send(response);
         }
         catch (e) {
             res.status(500).send(`Error while fetching the list of cakes`);
@@ -29,12 +35,27 @@ class CakeController {
                 const cakeId = parseInt(req.params.id);
                 const cake = await CakeService.getCakeById(cakeId);
                 if (cake) {
-                    res.status(200).send(cake);
+                    const response: ISendResponse = {
+                        ok: true,
+                        message: '',
+                        data: cake
+                    };
+                    res.status(200).send(response);
                 } else {
-                    res.status(400).send(`Cake with id ${req.params.id} is not found`);
+                    const response: ISendResponse = {
+                        ok: false,
+                        message: `Cake with id ${req.params.id} is not found`,
+                        data: null
+                    };
+                    res.status(400).send(response);
                 }
             } else {
-                res.status(400).send('Invalid input supplied');
+                const response: ISendResponse = {
+                    ok: false,
+                    message: `Invalid input supplied`,
+                    data: null
+                };
+                res.status(400).send(response);
             }
         }
         catch (e) {
@@ -49,15 +70,30 @@ class CakeController {
      */
     public async addNewCake(req: express.Request, res: express.Response): Promise<void> {
         try {
-            if (req.body.newCakeDetails) {
-                const addResult = await CakeService.addNewCake(req.body.newCakeDetails);
-                res.status(200).send(addResult);
+            if (req.body.cake) {
+                const addResult = await CakeService.addNewCake(req.body.cake);
+                const response: ISendResponse = {
+                    ok: true,
+                    message: '',
+                    data: addResult
+                };
+                res.status(200).send(response);
             } else {
-                res.status(400).send('Invalid input supplied');
+                const response: ISendResponse = {
+                    ok: false,
+                    message: 'Invalid input supplied',
+                    data: null
+                };
+                res.status(400).send(response);
             }
         }
         catch (e) {
-            res.status(500).send(`Error while updating the cake details`);
+            const response: ISendResponse = {
+                ok: false,
+                message: 'Error while updating the cake details',
+                data: null
+            };
+            res.status(500).send(response);
         }
     }
 
@@ -71,16 +107,36 @@ class CakeController {
             if (req.body.newCakeDetails) {
                 const updateResult = await CakeService.updateCakeDetails(req.body.newCakeDetails);
                 if (updateResult) {
-                    res.status(200).send('Details updated successfully');
+                    const response: ISendResponse = {
+                        ok: true,
+                        message: 'Details updated successfully',
+                        data: null
+                    };
+                    res.status(200).send(response);
                 } else {
-                    res.status(400).send('Supplied cake id is not present to update');
+                    const response: ISendResponse = {
+                        ok: false,
+                        message: 'Supplied cake id is not present to update',
+                        data: null
+                    };
+                    res.status(400).send(response);
                 }
             } else {
-                res.status(400).send('Invalid input supplied');
+                const response: ISendResponse = {
+                    ok: false,
+                    message: 'Invalid input supplied',
+                    data: null
+                };
+                res.status(400).send(response);
             }
         }
         catch (e) {
-            res.status(500).send(`Error while updating the cake details`);
+            const response: ISendResponse = {
+                ok: false,
+                message: 'Error while updating the cake details',
+                data: null
+            };
+            res.status(500).send(response);
         }
     }
 
@@ -95,16 +151,36 @@ class CakeController {
                 const cakeId = parseInt(req.params.id);
                 const deleteResult = await CakeService.deleteCake(cakeId);
                 if (deleteResult) {
-                    res.status(200).send('Deleted successfully');
+                    const response: ISendResponse = {
+                        ok: true,
+                        message: 'Deleted successfully',
+                        data: null
+                    };
+                    res.status(200).send(response);
                 } else {
-                    res.status(400).send('Supplied cake id is not present to delete');
+                    const response: ISendResponse = {
+                        ok: false,
+                        message: 'Supplied cake id is not present to delete',
+                        data: null
+                    };
+                    res.status(400).send(response);
                 }
             } else {
-                res.status(400).send('Invalid input supplied');
+                const response: ISendResponse = {
+                    ok: false,
+                    message: 'Invalid input supplied',
+                    data: null
+                };
+                res.status(400).send(response);
             }
         }
         catch (e) {
-            res.status(500).send(`Error while updating the cake details`);
+            const response: ISendResponse = {
+                ok: false,
+                message: 'Error while updating the cake details',
+                data: null
+            };
+            res.status(500).send(response);
         }
     }
 }

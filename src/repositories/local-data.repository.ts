@@ -6,17 +6,24 @@ class LocalDataRepository {
     constructor() {
         this.cakes = [{
             id: 1,
-            name: "cake1",
-            comment: "This is 1st cake",
-            imageUrl: "http://waracle-cake/cake1.jpg",
+            name: "Gateau",
+            comment: "Chocolate, vanilla bean and boysenberry gateau. Gluten free, dairy free, refined sugar free",
+            imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626690335/box_615x0_cpimyf.jpg",
             yumFactor: 4
         },
         {
             id: 2,
-            name: "cake2",
-            comment: "This is 2nd cake",
-            imageUrl: "http://waracle-cake/cake2.jpg",
+            name: "Chocolate frosted",
+            comment: "This rich, moist chocolate cake makes an impressive birthday centrepiece – especially if, like my children, you are of the opinion that a birthday cake must always feature chocolate, and plenty of it.",
+            imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626690281/chocolate-frosted-cake-89183-2_hghioz.jpg",
             yumFactor: 5
+        },
+        {
+            id: 3,
+            name: "Panda Bear Cake",
+            comment: "Cute Panda bear cake, delicious and attractive. ",
+            imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626696190/panda-bear-cake-valentines-day-recipes-decorated-cakes-1_z9ojbo.jpg",
+            yumFactor: 4
         }];
     }
 
@@ -50,7 +57,7 @@ class LocalDataRepository {
         if (this.cakes.length) {
             newId = this.cakes[this.cakes.length - 1].id;
         }
-        cake.id = newId;
+        cake.id = newId + 1;
         this.cakes.push(cake);
         return cake;
     }
