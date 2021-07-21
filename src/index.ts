@@ -20,6 +20,18 @@ if (!process.env.CLOUD_NAME || !process.env.API_KEY || !process.env.API_SECRET) 
         api_secret: process.env.API_SECRET
     });
 
+    app.get('/', (req, res) => {
+        res.set('Content-Type', 'text/html');
+        res.send(Buffer.from(`
+        <b>Available APIs</b><br>
+        GET /cake/list :: Get list of all cakes<br>
+        GET /cake/:id' :: Get cake by it's ID<br>        
+        POST /cake/add :: Create a new cake<br>        
+        PUT /cake/update :: update an existing cake<br>        
+        DELETE /cake/delete/:id :: Delete a cake<br>        
+        POST /image-upload :: to upload a image to cloudinary`));
+    });
+
     app.get('/cake/list', CakeController.getAllCakes);
     app.get('/cake/:id', CakeController.getCakeById);
     app.post('/cake/add', CakeController.addNewCake);
