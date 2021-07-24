@@ -14,15 +14,15 @@ class LocalDataRepository {
         {
             id: 2,
             name: "Chocolate frosted",
-            comment: "This rich, moist chocolate cake makes an impressive birthday centrepiece – especially if, like my children, you are of the opinion that a birthday cake must always feature chocolate, and plenty of it.",
+            comment: "This rich, moist chocolate cake makes an impressive birthday centerpiece – especially if, like my children, you are of the opinion that a birthday cake must always feature chocolate, and plenty of it.",
             imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626690281/chocolate-frosted-cake-89183-2_hghioz.jpg",
             yumFactor: 5
         },
         {
             id: 3,
-            name: "Panda Bear Cake",
-            comment: "Cute Panda bear cake, delicious and attractive. ",
-            imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626696190/panda-bear-cake-valentines-day-recipes-decorated-cakes-1_z9ojbo.jpg",
+            name: "Gems cake",
+            comment: "Cute gems cake, delicious and attractive.",
+            imageUrl: "https://res.cloudinary.com/dj8hpyysc/image/upload/v1626883307/sjdpdggvvk6b9nixtpxz.jpg",
             yumFactor: 4
         }];
     }
